@@ -46,7 +46,7 @@ public class ControllerServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException  {
-		String action = request.getPathInfo();
+		String action = request.getPathInfo();		
 
 		try {
 			switch(action) {
@@ -109,7 +109,14 @@ public class ControllerServlet extends HttpServlet {
 	}
 	
 	private void deleteBook(HttpServletRequest request, HttpServletResponse response) throws ServletException{
-		
+		int id = Integer.parseInt(request.getParameter("id"));
+		bookDAO.deleteBook(id);
+		try {
+			response.sendRedirect("list");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

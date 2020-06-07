@@ -17,26 +17,30 @@
     <c:if test="${book !=null}">
       <form name="book_form" method="post" action="update" />
     </c:if>
-    <form name="book_form" method="post" action="insert">
+    
+    <c:if test="${book == null}">
+      <form name="book_form" method="post" action="insert">
+    </c:if>
+    
     <h2>
       <c:if test="${book !=null}">
         Edit Book Form
       </c:if>
-      <c:if test="${book = null}">
+      <c:if test="${book == null}">
         New Book Form
       </c:if>        
     </h2>
     
     <c:if test="${book !=null}">
-      <input type="hidden" name="id" value=<c:out value="${book.id}"/>/>
+      <input type="hidden" name="id" value=<c:out value='${book.id}'/>/>
     </c:if>
     
 	  <p><label>Title:</label>
-    <input type="text" name="booktitle" value="${book.title}"/></p>
+    <input type="text" name="booktitle" value='${book.title}'/></p>
 	  <p><label>Author:</label>
-    <input type="text" name="bookauthor" value="${book.author}" /></p>
+    <input type="text" name="bookauthor" value='${book.author}' /></p>
     <p><label>Price:</label>
-    <input type="text" name="bookprice" value="${book.price}" /></p>
+    <input type="text" name="bookprice" value='${book.price}' /></p>
 	  <p><input type="submit" value="Submit"></p>
 	</form>
 	</div>

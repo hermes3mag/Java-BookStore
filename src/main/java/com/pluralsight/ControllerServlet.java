@@ -155,7 +155,7 @@ public class ControllerServlet extends HttpServlet {
 		Book book = new Book(id, title, author, price);
 		bookDAO.updateBook(book);
 		
-		response.sendRedirect("/list");
+		response.sendRedirect("list");
 		
 	}
 
